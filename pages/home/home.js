@@ -17,7 +17,7 @@ Page({
     searchValue:"",
     show: false,
     book: null,
-    active: "商城",
+    active: "首页",
   },
 
   /**

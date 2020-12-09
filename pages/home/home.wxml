@@ -22,10 +22,9 @@
   </view>
   <!--底边栏-->
   <van-tabbar active="{{ active }}" bind:change="tarbarChange">
-    <van-tabbar-item icon="home-o" name="商城">商城</van-tabbar-item>
-    <van-tabbar-item icon="chat-o" name="客服">客服</van-tabbar-item>
-    <van-tabbar-item icon="cart-o" info="5" name="购物车">购物车</van-tabbar-item>
-    <van-tabbar-item icon="setting-o" name="设置">设置</van-tabbar-item>
+    <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
+    <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>
+    <van-tabbar-item icon="mine-o" info="5" name="我的">我的</van-tabbar-item>
   </van-tabbar>
   <!--遮罩层-->
   <van-overlay show="{{ show }}" bind:click="onClickHide">
