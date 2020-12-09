@@ -26,8 +26,20 @@ const stringSwitch = (s) => {
   return 'null';
 }
 
+const vehicleStringSwitch = (s) => {
+  switch(s){
+    case '地铁':
+      return 0;
+    case '单车':
+      return 1;
+    case '公交':
+      return 2;
+  }
+}
+
 module.exports = {
   formatTime: formatTime,
   formatNumber: formatNumber,
-  stringSwitch: stringSwitch
+  stringSwitch: stringSwitch,
+  vehicleStringSwitch: vehicleStringSwitch
 }

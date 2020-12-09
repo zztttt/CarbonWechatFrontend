@@ -1,5 +1,6 @@
 // pages/cart/cart.js
 import { stringSwitch } from "../../utils/util";
+import {vehicleStringSwitch} from "../../utils/util"
 
 Page({
 
@@ -9,10 +10,12 @@ Page({
   data: {
     vehicles: [
       {name:"地铁", "b":2, "c":3},
-      {name:"公交", "b":5, "c":6},
-      {name:"单车", "b":8, "c":9}
+      {name:"单车", "b":8, "c":9},
+      {name:"公交", "b":5, "c":6}
     ],
-    active: '首页'
+    active: '首页',
+    visible: true,
+    vehicleType: null
   },
 
   tarbarChange(e) {
@@ -29,9 +32,40 @@ Page({
   },
   bindViewTap(e) {
     console.log("bindViewTap:" + e.currentTarget.dataset.vehicle.name);
-    let username = wx.getStorageSync('username');
-    let password = wx.getStorageSync('password');
-    console.log("username:" + username + ",password:" + password);
+    this.setData({
+      vehicleType: vehicleStringSwitch(e.currentTarget.dataset.vehicle.name)
+    });
+  },
+  start(e) {
+    if(this.data.vehicleType != null){
+      let _userId = wx.getStorageSync('userId');
+      let timer = new Date();
+      wx.request({
+        url: 'http://localhost:8080/user/startTravel',
+        method: "POST",
+        data: {userId: _userId, vehicleType: this.data.vehicleType, time: timer.getTime()},
+        header: {
+          'content-type': 'application/json', // 默认值
+        },
+        success(res) {
+          console.log(res);
+        }
+      })
+      this.setData({
+        visible: false,
+        vehicleType: null
+      });
+    }else{
+      wx.showToast({
+        title: '请选择出行工具！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+  end(e) {
+    console.log("end");
+    this.setData({visible: true});
   },
   /**
    * 生命周期函数--监听页面加载

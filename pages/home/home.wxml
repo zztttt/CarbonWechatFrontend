@@ -14,9 +14,10 @@
       </view>
     </block> 
   </view>
-
-  <view style="width:15rem; height:6rem; margin: 5rem 0 " >
-      <van-button bindtap="bindViewTap" type="info" block>开始出行</van-button>
+  <!--出行按钮-->
+  <view style="width:15rem; height:6rem;">
+      <van-button wx:if = "{{visible}}"bindtap="start" type="info" block class = "logo_ground">开始出行</van-button>
+      <van-button wx:else bindtap="end" type="info" block class = "logo_ground">结束出行</van-button>
   </view>
   <van-tabbar active="{{ active }}" bind:change="tarbarChange">
     <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>

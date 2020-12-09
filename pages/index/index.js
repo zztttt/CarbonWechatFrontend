@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    username: 'zztttt',
+    userId: 1315691850,
     password: 'zztdcyy',
     motto: 'Hello World',
     userInfo: {},
@@ -18,7 +18,7 @@ Page({
     })
   },
   onLoad: function () {
-    wx.setStorageSync('username', this.data.username);
+    wx.setStorageSync('userId', this.data.userId);
     wx.setStorageSync('password', this.data.password);
     if (app.globalData.userInfo) {
       this.setData({

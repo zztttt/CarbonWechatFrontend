@@ -1,5 +1,6 @@
-.button{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.logo_ground{
+  position: fixed;
+  width: 15rem;
+  height: 50rpx;
+  bottom: 100px;
 }
