@@ -7,6 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    vehicles: [
+      {name:"地铁", "b":2, "c":3},
+      {name:"公交", "b":5, "c":6},
+      {name:"单车", "b":8, "c":9}
+    ],
     active: '首页'
   },
 
@@ -20,7 +25,13 @@ Page({
     console.log(_url);
     wx.redirectTo({
       url: _url
-    })
+    });
+  },
+  bindViewTap(e) {
+    console.log("bindViewTap:" + e.currentTarget.dataset.vehicle.name);
+    let username = wx.getStorageSync('username');
+    let password = wx.getStorageSync('password');
+    console.log("username:" + username + ",password:" + password);
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,8 +1,26 @@
-<view>
+<view class="container">
   <text>this is home</text>
+  <!--
+  <van-card price="2.00" desc="描述信息" title="地铁" thumb="{{ imageURL }}"/>
+  <van-card price="1.50" desc="描述信息" title="单车" thumb="{{ imageURL }}"/>
+  <van-card price="2.00" desc="描述信息" title="公交" thumb="{{ imageURL }}"/>
+  -->
+  <!--交通工具-->
+  <view style="display:flex; justify-content:space-around; flex-wrap:wrap;">
+    <block wx:for-items="{{vehicles}}" wx:for-item="vehicle" wx:key="name">
+      <view style="width:6rem; height:8rem;text-align:center">
+        <van-image bindtap="bindViewTap" data-vehicle='{{vehicle}}' width="6rem" height="6rem" fit="contain" src="http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg" /> 
+        <text>{{vehicle.name}}</text>
+      </view>
+    </block> 
+  </view>
+
+  <view style="width:15rem; height:6rem; margin: 5rem 0 " >
+      <van-button bindtap="bindViewTap" type="info" block>开始出行</van-button>
+  </view>
   <van-tabbar active="{{ active }}" bind:change="tarbarChange">
     <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
     <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>
-    <van-tabbar-item icon="mine-o" info="5" name="我的">我的</van-tabbar-item>
+    <van-tabbar-item icon="mine-o" name="我的" info="5">我的</van-tabbar-item>
   </van-tabbar>
 </view>
