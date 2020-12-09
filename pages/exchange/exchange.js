@@ -1,4 +1,5 @@
-// pages/cart/cart.js
+const app = getApp()
+// pages/books/books.js
 import { stringSwitch } from "../../utils/util";
 
 Page({
@@ -7,9 +8,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: '兑换'
+    books:[],
+    carouselImgUrls: [
+      "../../assets/book1.jpg",
+      "../../assets/book2.jpg",
+      "../../assets/book3.jpg",
+      "../../assets/book4.jpg"
+    ],
+    searchValue:"",
+    show: false,
+    book: null,
+    active: '兑换',
   },
-
+  //点击书籍
+  bindViewTap: function (event) {
+    this.setData({ show: true, book: event.currentTarget.dataset.book});
+    console.log(event.currentTarget.dataset.book);
+  },
+  //搜索框
+  onChange(e) {
+    console.log("onChange");
+    this.setData({
+      searchvalue: e.detail
+    });
+  },
   tarbarChange(e) {
     console.log("tarbarChange:" + e.detail);
     this.setData({
@@ -22,11 +44,57 @@ Page({
       url: _url
     })
   },
+
+  onSearch() {
+    wx.showToast({
+      title: '搜索功能还没做，偷个懒！',
+      icon: 'none',
+      duration: 2000
+    })
+  },
+  //点击坐下图标
+  onClickIcon() {
+    wx.showToast({
+      title: '客服没钱请！购物车还没做！',
+      icon: 'none',
+      duration: 2000
+    })
+  },
+  //点击右下按钮
+  onClickButton() {
+    wx.showToast({
+      title: '别买了！！！',
+      icon: 'none',
+      duration: 2000
+    })
+  },
+  //点击底边栏
+  onChange(event) {
+    // event.detail 的值为当前选中项的索引
+    this.setData({ active: event.detail });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    /*wx.request({
+      url: 'http://localhost:8080/getBooks',
+      method: "POST",
+      data: {
+        11:11
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'cookie': wx.getStorageSync("sessionid") //cookie
+      },
+      success(res) {
+        console.log(res);
+        that.setData({
+          books: res.data
+        })
+      }
+    });*/
   },
 
   /**
