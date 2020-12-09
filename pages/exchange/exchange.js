@@ -1,20 +1,25 @@
 // pages/cart/cart.js
+import { stringSwitch } from "../../utils/util";
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: "购物车"
+    active: '兑换'
   },
 
-  tarbarChange: function(e){
+  tarbarChange(e) {
     console.log("tarbarChange:" + e.detail);
     this.setData({
       active: e.detail
     });
-    wx.navigateTo({
-      url: '../cart/cart'
+    var dst = stringSwitch(e.detail);
+    var _url = '../' + dst + '/' + dst;
+    console.log(_url);
+    wx.redirectTo({
+      url: _url
     })
   },
   /**

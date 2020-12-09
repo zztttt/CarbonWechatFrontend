@@ -14,7 +14,20 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const stringSwitch = (s) => {
+  switch(s){
+    case '首页':
+      return 'home';
+    case '兑换':
+      return 'exchange';
+    case "我的":
+      return 'mine';
+  }
+  return 'null';
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatNumber: formatNumber
+  formatNumber: formatNumber,
+  stringSwitch: stringSwitch
 }
