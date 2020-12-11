@@ -29,11 +29,11 @@ const stringSwitch = (s) => {
 const vehicleStringSwitch = (s) => {
   switch(s){
     case '地铁':
-      return 0;
+      return 'subway';
     case '单车':
-      return 1;
+      return 'bike';
     case '公交':
-      return 2;
+      return 'bus';
   }
 }
 

@@ -1,6 +1,6 @@
 // pages/cart/cart.js
 import { stringSwitch } from "../../utils/util";
-import {vehicleStringSwitch} from "../../utils/util"
+import { vehicleStringSwitch } from "../../utils/util"
 
 Page({
 
@@ -38,12 +38,14 @@ Page({
   },
   start(e) {
     if(this.data.vehicleType != null){
-      let _userId = wx.getStorageSync('userId');
+      let _userdata = wx.getStorageSync('userdata');
+      let _data = {userid: _userdata.id, vehicletype: this.data.vehicleType};
+      console.log(_data);
       let timer = new Date();
       wx.request({
-        url: 'http://localhost:8080/user/startTravel',
+        url: 'http://114.55.137.158:8080/user/startTravel',
         method: "POST",
-        data: {userId: _userId, vehicleType: this.data.vehicleType, time: timer.getTime()},
+        data: _data,
         header: {
           'content-type': 'application/json', // 默认值
         },

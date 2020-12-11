@@ -4,8 +4,9 @@ const app = getApp()
 
 Page({
   data: {
-    userId: 1315691850,
-    password: 'zztdcyy',
+    username: 'zzt',
+    password: '123',
+    userdata: null,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -18,8 +19,21 @@ Page({
     })
   },
   onLoad: function () {
-    wx.setStorageSync('userId', this.data.userId);
+    let that = this;
+    wx.setStorageSync('username', this.data.username);
     wx.setStorageSync('password', this.data.password);
+    wx.request({
+      url: 'http://114.55.137.158:8080/user/login',
+      method: "POST",
+      data: {username: this.data.username, password: this.data.password},
+      header: {
+        'content-type': 'application/json', // 默认值
+      },
+      success(res) {
+        console.log(res);
+        wx.setStorageSync('userdata', res.data.data);
+      }
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
