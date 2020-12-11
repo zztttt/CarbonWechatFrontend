@@ -51,6 +51,7 @@ Page({
         },
         success(res) {
           console.log(res);
+          wx.setStorageSync('travelRecord', res.data.data);
         }
       })
       this.setData({
@@ -67,6 +68,20 @@ Page({
   },
   end(e) {
     console.log("end");
+    let _userdata = wx.getStorageSync('userdata');
+    let _travelData = wx.getStorageSync('travelRecord');
+    let _data = { id: _travelData.id, userid: _travelData.userid };
+    wx.request({
+      url: 'http://114.55.137.158:8080/user/endTravel',
+      method: "POST",
+      data: _data,
+      header: {
+        'content-type': 'application/json', // 默认值
+      },
+      success(res) {
+        console.log(res);
+      }
+    })
     this.setData({visible: true});
   },
   /**

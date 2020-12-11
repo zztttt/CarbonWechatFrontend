@@ -14,11 +14,6 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../home/home'
-    })
-  },
-  onLoad: function () {
     let that = this;
     wx.setStorageSync('username', this.data.username);
     wx.setStorageSync('password', this.data.password);
@@ -34,6 +29,11 @@ Page({
         wx.setStorageSync('userdata', res.data.data);
       }
     })
+    wx.navigateTo({
+      url: '../home/home'
+    })
+  },
+  onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
