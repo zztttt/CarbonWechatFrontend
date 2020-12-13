@@ -26,8 +26,26 @@
       </view>
     </block> 
   </view>
-
+  <!--底边栏-->
+  <van-tabbar active="{{ active }}" bind:change="tarbarChange">
+    <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
+    <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>
+    <van-tabbar-item icon="mine-o" info="5" name="我的">我的</van-tabbar-item>
+  </van-tabbar>
   <!--遮罩层-->
+  <van-overlay show="{{ show }}" bind:click="onClickHide">
+    <view class="wrapper">
+      <view style="display:flex; justify-content:center; flex-wrap:wrap; align-items:center; height:25rem">
+        <van-image width="18rem" height="18rem" fit="contain" src="http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg" /> 
+        <button> 请选择数量 </button>
+        <van-submit-bar
+  price="{{ 3050 }}"
+  button-text="提交订单"
+  bind:submit="onSubmit"
+/>
+      </view>
+    </view>
+  </van-overlay>
   <!--<van-overlay show="{{ show }}" bind:click="onClickHide">
     <view class="wrapper">
       <view style="display:flex;justify-content:center;align-items:center;height:25rem">
@@ -43,9 +61,3 @@
   </van-overlay>-->
 </view>
 
-<!--底边栏-->
-<van-tabbar active="{{ active }}" bind:change="tarbarChange">
-  <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
-  <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>
-  <van-tabbar-item icon="mine-o" info="5" name="我的">我的</van-tabbar-item>
-</van-tabbar>
