@@ -31,3 +31,8 @@
   animation-iteration-count: infinite;
   animation-timing-function:linear;
 }
+.rewards{
+  position:fixed; 
+  bottom:100px;
+  width: 750rpx;
+}

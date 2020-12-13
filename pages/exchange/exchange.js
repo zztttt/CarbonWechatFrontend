@@ -8,7 +8,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books:[],
+    rewards:[
+      { name: "reward1", id: 1},
+      { name: "reward2", id: 2},
+      { name: "reward3", id: 3},
+      { name: "reward4", id: 4},
+      { name: "reward5", id: 5},
+      { name: "reward6", id: 6}
+    ],
     carouselImgUrls: [
       "../../assets/book1.jpg",
       "../../assets/book2.jpg",
@@ -17,13 +24,13 @@ Page({
     ],
     searchValue:"",
     show: false,
-    book: null,
-    active: '兑换',
+    reward: null,
+    active: '兑换'
   },
   //点击书籍
-  bindViewTap: function (event) {
-    this.setData({ show: true, book: event.currentTarget.dataset.book});
-    console.log(event.currentTarget.dataset.book);
+  showRewardDetail: function (event) {
+    this.setData({ show: true, reward: event.currentTarget.dataset.reward});
+    console.log(event.currentTarget.dataset.reward);
   },
   //搜索框
   onChange(e) {

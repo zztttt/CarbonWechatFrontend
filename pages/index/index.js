@@ -17,6 +17,7 @@ Page({
     let that = this;
     wx.setStorageSync('username', this.data.username);
     wx.setStorageSync('password', this.data.password);
+    // axios
     wx.request({
       url: 'http://114.55.137.158:8080/user/login',
       method: "POST",
