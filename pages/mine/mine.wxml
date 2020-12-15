@@ -1,5 +1,15 @@
+<van-panel title="用户" desc="用户信息" status="状态" use-footer-slot>
+  <van-cell-group>
+    <van-cell title="单元格1" value="内容1" />
+    <van-cell title="单元格2" value="内容2" label="描述信息" border="{{ false }}" />
+  </van-cell-group>
+  <view slot="footer">
+    <van-button size="small">按钮</van-button>
+    <van-button size="small" type="danger">按钮</van-button>
+  </view>
+</van-panel>
+
 <view>
-  <text>this is mine</text>
   <van-tabbar active="{{ active }}" bind:change="tarbarChange">
     <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
     <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>
