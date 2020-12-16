@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    username: 'zzt',
+    username: 'test4',
     password: '123',
     userdata: null,
     motto: 'Hello World',
@@ -27,6 +27,17 @@ Page({
       },
       success(res) {
         console.log(res);
+        /*
+        age: 50
+        credit: 10
+        gender: 1
+        id: 1607508033355
+        password: "123"
+        userdesc: null
+        userexchanges: (2) [{…}, {…}]
+        username: "test2"
+        usertravelrecords: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+        */
         wx.setStorageSync('userdata', res.data.data);
       }
     })

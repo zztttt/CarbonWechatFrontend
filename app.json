@@ -6,12 +6,13 @@
     "pages/exchange/exchange",
     "pages/mine/mine",
     "pages/test/test",
-    "pages/exchangeHistory/exchangeHistory"
+    "pages/exchangeHistory/exchangeHistory",
+    "pages/travelHistory/travelHistory"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "Carbon",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

@@ -9,7 +9,9 @@ Page({
   data: {
     active: '我的',
     username: "null",
-    credit: 0
+    userdesc: "null",
+    istraveling: "null",
+    credit: -1
   },
   tarbarChange(e) {
     console.log("tarbarChange:" + e.detail);
@@ -27,7 +29,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _userdata = wx.getStorageSync('userdata');
+    wx.request({
+      url: 'http://114.55.137.158:8080/user/login',
+      method: "POST",
+      data: {username: _userdata.username, password: _userdata.password},
+      header: {
+        'content-type': 'application/json', // 默认值
+      },
+      success(res) {
+        console.log(res);
+        wx.setStorageSync('userdata', res.data.data);
+      }
+    })
+    
+    _userdata = wx.getStorageSync('userdata');
+    var _userdesc = _userdata.userdesc;
+    this.setData({
+      username: _userdata.username,
+      istraveling: _userdata.istraveling? "正在出行":"未出行",
+      credit: _userdata.credit,
+      userdesc: _userdesc.university + ", " +  _userdesc.dorm + ", " + _userdesc.lab
+    })
   },
 
   /**
