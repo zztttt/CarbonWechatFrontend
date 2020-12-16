@@ -1,17 +1,20 @@
 <!--pages/exchangeHistory/exchangeHistory.wxml-->
-<view style="text-align:center">
-  <text>exchange record</text>
-</view>
-<view style="display:flex; justify-content:space-around; flex-wrap:wrap;">
+<van-nav-bar title="兑换记录" bind:click-left="onClickLeft" bind:click-right="onClickRight"> 
+  <van-icon name="share" slot="right" size="20px"/>
+</van-nav-bar>
+<view style="display:flex; flex-direction:column-reverse; justify-content:space-around; flex-wrap:wrap;">
   <block wx:for-items="{{items}}" wx:for-item="item" wx:key="title">
-    <view style="width:20rem; height:6rem">
-      <van-card 
-        title="{{item.rewardname}}" 
-        price="{{item.totalcredit}}积分" 
-        num="{{item.quantity}}" 
-        desc="兑换时间: {{item.exchangetime}} \n, 单价：{{item.rewardinfo.price}}RMB"
-        thumb="{{item.rewardinfo.image}}"  
-        currency=""/>
+    <view style="width:100%; height:8rem">
+      <view style="display:flex; flex-direction:column-reverse;">
+        <van-card 
+          title="{{item.rewardname}}" 
+          price="{{item.totalcredit}}积分" 
+          num="{{item.quantity}}" 
+          desc="兑换时间: {{item.exchangetime}} \n, 单价：{{item.rewardinfo.price}}RMB"
+          thumb="{{item.rewardinfo.image}}"  
+          currency=""/>
+        <van-divider />
+      </view>
     </view>
   </block> 
 </view>

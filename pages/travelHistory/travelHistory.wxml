@@ -1,25 +1,25 @@
 <!--pages/travelHistory/travelHistory.wxml-->
 <wxs module="util" src="./travelHistory.wxs"></wxs>
-<view style="text-align:center">
-  <text>travel record</text>
-</view>
-<view style="display:flex; justify-content:space-around; flex-wrap:wrap;">
+<van-nav-bar title="出行记录" bind:click-left="onClickLeft" bind:click-right="onClickRight"> 
+  <van-icon name="share" slot="right" size="20px"/>
+</van-nav-bar>
+<view style="display:flex; flex-direction:column-reverse; justify-content:space-around; flex-wrap:wrap;">
   <block wx:for-items="{{records}}" wx:for-item="record" wx:key="title">
-    <view style="width:20rem; height:6rem">
-      <van-card 
-        title="{{record.starttime}} | {{record.vehicletype}}" 
-        price="{{record.price}}"  
-        desc="出行时间：{{util.calculateTravelTime(record.starttime, record.endtime)}}" 
-        currency="">
-        <view slot="num">
-          
-        </view>
-        <view slot="bottom">
-          <text wx:if="record.isfinished" style="display: block;text-align: right">√ 已完成</text>
-          <text wx:else style="display: block;text-align: right">x 未完成</text>
-          <text style="display: block;text-align: right">获得积分：{{record.credit}}</text>
-        </view>
-      </van-card>
+    <view style="width:100%; height:8rem">
+      <view style="display:flex; flex-direction:column-reverse">
+        <van-card 
+          title="{{record.starttime}} | {{record.vehicletype}}" 
+          price="{{record.price}}"  
+          desc="出行时间：{{util.calculateTravelTime(record.starttime, record.endtime)}}" 
+          currency="">
+          <view slot="bottom">
+            <text wx:if="record.isfinished" style="display:block; text-align:right">√ 已完成</text>
+            <text wx:else style="display:block; text-align:right">x 未完成</text>
+            <text style="display:block; text-align:right">获得积分：{{record.credit}}</text>
+          </view>
+        </van-card>
+        <van-divider />
+      </view>
     </view>
   </block> 
 </view>
