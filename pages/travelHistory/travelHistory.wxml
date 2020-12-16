@@ -8,12 +8,16 @@
     <view style="width:20rem; height:6rem">
       <van-card 
         title="{{record.starttime}} | {{record.vehicletype}}" 
-        price="{{record.price}}" 
-        num="{{record.isfinished? '已完成':'未完成'}}" 
+        price="{{record.price}}"  
         desc="出行时间：{{util.calculateTravelTime(record.starttime, record.endtime)}}" 
         currency="">
+        <view slot="num">
+          
+        </view>
         <view slot="bottom">
-          <text>获得积分：{{record.credit}}</text>
+          <text wx:if="record.isfinished" style="display: block;text-align: right">√ 已完成</text>
+          <text wx:else style="display: block;text-align: right">x 未完成</text>
+          <text style="display: block;text-align: right">获得积分：{{record.credit}}</text>
         </view>
       </van-card>
     </view>
