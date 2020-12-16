@@ -5,7 +5,8 @@
     "pages/home/home",
     "pages/exchange/exchange",
     "pages/mine/mine",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/exchangeHistory/exchangeHistory"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,7 +19,6 @@
   "usingComponents": {
     "van-image": "@vant/weapp/image",
     "van-search": "@vant/weapp/search",
-
     "van-overlay": "@vant/weapp/overlay",
     "van-tabbar": "@vant/weapp/tabbar",
     "van-tabbar-item": "@vant/weapp/tabbar-item"

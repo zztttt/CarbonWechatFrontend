@@ -1,12 +1,8 @@
-<van-panel title="用户" desc="用户信息" status="状态" use-footer-slot>
+<van-panel title="{{username}}" desc="用户信息" status="状态" use-footer-slot>
   <van-cell-group>
-    <van-cell title="单元格1" value="内容1" />
-    <van-cell title="单元格2" value="内容2" label="描述信息" border="{{ false }}" />
+    <van-cell title="我的积分" value="{{credit}}" size="large" />
+    <van-cell title="兑换记录" is-link size="large" link-type="navigateTo" url='../exchangeHistory/exchangeHistory' border="{{ false }}" /> 
   </van-cell-group>
-  <view slot="footer">
-    <van-button size="small">按钮</van-button>
-    <van-button size="small" type="danger">按钮</van-button>
-  </view>
 </van-panel>
 
 <view>

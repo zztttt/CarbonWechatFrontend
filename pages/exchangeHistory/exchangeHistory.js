@@ -1,28 +1,17 @@
-// pages/mine/mine.js
-import { stringSwitch } from "../../utils/util";
-
+// pages/exchangeHistory/exchangeHistory.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: '我的',
-    username: "null",
-    credit: 0
+    items: [
+      {title: "1", price: 1, num: 1, desc: "desc", img: "http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg"},
+      //{title: "2", price: 1, num: 1, desc: "desc", img: "http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg"},
+      //{title: "2", price: 1, num: 1, desc: "desc", img: "http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg"}
+    ]
   },
-  tarbarChange(e) {
-    console.log("tarbarChange:" + e.detail);
-    this.setData({
-      active: e.detail
-    });
-    var dst = stringSwitch(e.detail);
-    var _url = '../' + dst + '/' + dst;
-    console.log(_url);
-    wx.redirectTo({
-      url: _url
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

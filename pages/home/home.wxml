@@ -1,6 +1,7 @@
 <view class="container">
   <text wx:if="{{visible}}">请开始出行</text>
   <text wx:else>请结束出行</text>
+  <van-card price="2.00" desc="描述信息" title="地铁" thumb="{{ imageURL }}"/>
   <!--
   <van-card price="2.00" desc="描述信息" title="地铁" thumb="{{ imageURL }}"/>
   <van-card price="1.50" desc="描述信息" title="单车" thumb="{{ imageURL }}"/>
