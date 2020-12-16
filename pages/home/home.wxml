@@ -1,25 +1,25 @@
-<view class="container">
-  <text wx:if="{{visible}}">请开始出行</text>
-  <text wx:else>请结束出行</text>
-  <!--
-  <van-card price="2.00" desc="描述信息" title="地铁" thumb="{{ imageURL }}"/>
-  <van-card price="1.50" desc="描述信息" title="单车" thumb="{{ imageURL }}"/>
-  <van-card price="2.00" desc="描述信息" title="公交" thumb="{{ imageURL }}"/>
-  -->
+<van-nav-bar title="" bind:click-left="onClickLeft" bind:click-right="onClickRight">
+  <van-icon name="comment" slot="left"/>
+  <van-icon name="photograph" slot="right"/>
+</van-nav-bar>
+<van-panel title="Hello! {{username}}" desc="{{userdesc}}" status="{{istraveling}}"></van-panel>
+<view>
   <!--交通工具-->
   <view style="display:flex; justify-content:space-around; flex-wrap:wrap;">
     <block wx:for-items="{{vehicles}}" wx:for-item="vehicle" wx:key="name">
-      <view style="width:6rem; height:8rem;text-align:center">
-        <van-image bindtap="bindViewTap" data-vehicle='{{vehicle}}' width="6rem" height="6rem" fit="contain" src="http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg" /> 
-        <text>{{vehicle.name}}</text>
+      <view style="width:100%; height:20%; text-align:center">
+        <view style="display:flex; flex-direction:column;">
+          <van-image bindtap="bindViewTap" data-vehicle='{{vehicle}}' width="100%" height="4rem" fit="contain" src="http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg" /> 
+          <text>{{vehicle.name}}: {{vehicle.credit}}积分/分钟</text>
+          <van-divider />
+        </view>
       </view>
     </block> 
+    <van-button wx:if = "{{visible}}"bindtap="start" type="info" block style="position:fixed; width:15rem; height:15rpx; bottom:100px">开始出行</van-button>
+    <van-button wx:else bindtap="end" type="info" block style="position:fixed; width:15rem; height:15rpx; bottom:100px">结束出行</van-button>
   </view>
   <!--出行按钮-->
-  <view style="width:15rem; height:6rem;">
-      <van-button wx:if = "{{visible}}"bindtap="start" type="info" block class = "logo_ground">开始出行</van-button>
-      <van-button wx:else bindtap="end" type="info" block class = "logo_ground">结束出行</van-button>
-  </view>
+
   <van-tabbar active="{{ active }}" bind:change="tarbarChange">
     <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
     <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>

@@ -16,7 +16,7 @@
     <block wx:for-items="{{rewards}}" wx:for-item="reward" wx:key="name">
       <view style="width:9rem; height:12rem;text-align:center; bottom: 100px">
         <van-image bindtap="showRewardDetail" data-reward='{{reward}}' width="9rem" height="9rem" fit="contain" src="{{reward.image}}" /> 
-        <view style="display: flex;flex-direction: column;">
+        <view style="display:flex; flex-direction:column;">
           <text style="font-size:50rpx;">{{reward.name}}</text>
           <text style="color: white;">{{reward.name}}</text>
           <text style="color: white;">{{reward.name}}</text>

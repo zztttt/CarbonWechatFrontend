@@ -1,9 +1,9 @@
 {
   "usingComponents": {
-    "custom-swiper": "../components/customSwiper/customSwiper",
     "van-button":"@vant/weapp/button",
-    "van-card": "@vant/weapp/card",
-    "van-row": "@vant/weapp/row/index",
-    "van-col": "@vant/weapp/col/index"
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-panel": "@vant/weapp/panel/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
   }
 }

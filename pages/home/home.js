@@ -9,13 +9,16 @@ Page({
    */
   data: {
     vehicles: [
-      {name:"地铁", "b":2, "c":3},
-      {name:"单车", "b":8, "c":9},
-      {name:"公交", "b":5, "c":6}
+      {name:"地铁", price:3, credit:10},
+      {name:"单车", price:1.5, credit:1},
+      {name:"公交", price:2, credit:5}
     ],
     active: '首页',
     visible: true,
-    vehicleType: null
+    vehicleType: null,
+    username: 'null',
+    userdesc: 'null',
+    istraveling: "null"
   },
 
   tarbarChange(e) {
@@ -35,6 +38,11 @@ Page({
     this.setData({
       vehicleType: vehicleStringSwitch(e.currentTarget.dataset.vehicle.name)
     });
+    wx.showToast({
+      title: '选择了:' + e.currentTarget.dataset.vehicle.name,
+      icon: 'none',
+      duration: 2000
+    })
   },
   start(e) {
     if(this.data.vehicleType != null){
@@ -56,7 +64,8 @@ Page({
       })
       this.setData({
         visible: false,
-        vehicleType: null
+        vehicleType: null,
+        istraveling: "正在出行"
       });
     }else{
       wx.showToast({
@@ -82,15 +91,19 @@ Page({
         console.log(res);
       }
     })
-    this.setData({visible: true});
+    this.setData({visible: true, istraveling: "未出行"});
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var _userdata = wx.getStorageSync('userdata');
+    var _userdesc = _userdata.userdesc;
     this.setData({
-      visible: _userdata.istraveling? false: true
+      visible: _userdata.istraveling? false: true,
+      username: _userdata.username,
+      istraveling: _userdata.istraveling? "正在出行":"未出行",
+      userdesc: _userdesc.university + ", " +  _userdesc.dorm + ", " + _userdesc.lab
     })
   },
 
