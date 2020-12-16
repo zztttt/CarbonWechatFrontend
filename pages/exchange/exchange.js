@@ -8,7 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rewards:[
+    rewards: [],
+    reward: null,
+    rewardCount: 1,
+    testrewards:[
       { name: "reward1", id: 1},
       { name: "reward2", id: 2},
       { name: "reward3", id: 3},
@@ -24,7 +27,6 @@ Page({
     ],
     searchValue:"",
     show: false,
-    reward: null,
     active: '兑换'
   },
   //点击书籍
@@ -50,6 +52,30 @@ Page({
     wx.redirectTo({
       url: _url
     })
+  },
+  plusCount(e) {
+    this.setData({rewardCount: this.data.rewardCount + 1});
+  },
+  minusCount(e) {
+    if(this.data.rewardCount == 0)
+      return;
+    this.setData({rewardCount: this.data.rewardCount - 1});
+  },
+  makeExchange(e) {
+    var that = this;
+    var _userdata = wx.getStorageSync('userdata');
+    wx.request({
+      url: 'http://114.55.137.158:8080/user/makeExchange',
+      method: "POST",
+      header: {
+        'content-type': 'application/json', // 默认值
+      },
+      data: { userid: _userdata.id, rewardid: this.data.reward.id, quantity: this.data.rewardCount },
+      success(res) {
+        console.log(res);
+        that.setData({ show: false });
+      }
+    });
   },
 
   onSearch() {
@@ -80,28 +106,27 @@ Page({
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
   },
+  onClickHide() {
+    this.setData({show: false, rewardCount: 1});
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    /*wx.request({
-      url: 'http://localhost:8080/getBooks',
-      method: "POST",
-      data: {
-        11:11
-      },
+    wx.request({
+      url: 'http://114.55.137.158:8080/user/getRewards',
+      method: "GET",
       header: {
         'content-type': 'application/json', // 默认值
-        'cookie': wx.getStorageSync("sessionid") //cookie
       },
       success(res) {
         console.log(res);
         that.setData({
-          books: res.data
+          rewards: res.data.data.Rewards
         })
       }
-    });*/
+    });
   },
 
   /**

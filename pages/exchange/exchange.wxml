@@ -15,14 +15,13 @@
   <view style="display:flex; justify-content:space-around; flex-wrap:wrap; align-items:flex-end">
     <block wx:for-items="{{rewards}}" wx:for-item="reward" wx:key="name">
       <view style="width:9rem; height:12rem;text-align:center; bottom: 100px">
-        <van-image bindtap="showRewardDetail" data-reward='{{reward}}' width="9rem" height="9rem" fit="contain" src="http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg" /> 
+        <van-image bindtap="showRewardDetail" data-reward='{{reward}}' width="9rem" height="9rem" fit="contain" src="{{reward.image}}" /> 
         <view style="display: flex;flex-direction: column;">
           <text style="font-size:50rpx;">{{reward.name}}</text>
           <text style="color: white;">{{reward.name}}</text>
           <text style="color: white;">{{reward.name}}</text>
           <text style="color: white;">{{reward.name}}</text>
         </view>
-        
       </view>
     </block> 
   </view>
@@ -34,30 +33,17 @@
   </van-tabbar>
   <!--遮罩层-->
   <van-overlay show="{{ show }}" bind:click="onClickHide">
-    <view class="wrapper">
+    <view>
       <view style="display:flex; justify-content:center; flex-wrap:wrap; align-items:center; height:25rem">
-        <van-image width="18rem" height="18rem" fit="contain" src="http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg" /> 
-        <button> 请选择数量 </button>
-        <van-submit-bar
-  price="{{ 3050 }}"
-  button-text="提交订单"
-  bind:submit="onSubmit"
-/>
+        <van-image width="18rem" height="18rem" fit="contain" src="{{reward.image}}" />
       </view>
+      
     </view>
+    
   </van-overlay>
-  <!--<van-overlay show="{{ show }}" bind:click="onClickHide">
-    <view class="wrapper">
-      <view style="display:flex;justify-content:center;align-items:center;height:25rem">
-        <van-image width="18rem" height="18rem" fit="contain" src="{{book.image}}" /> 
-      </view>
-      <van-goods-action fixed = "true">
-        <van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon"/>
-        <van-goods-action-icon icon="cart-o" text="购物车" bind:click="onClickIcon"/>
-        <van-goods-action-button text="加入购物车" type="warning"bind:click="onClickButton"/>
-        <van-goods-action-button text="立即购买" bind:click="onClickButton"/>
-      </van-goods-action>
-    </view>
-  </van-overlay>-->
+  
+  <van-submit-bar wx-if="{{show}}" label="积分:" price="{{ rewardCount * reward.credit * 100 }}" currency="" decimal-length="0" button-text="兑换" bind:submit="makeExchange" >
+    <van-stepper wx-if="{{show}}" value="{{ rewardCount }}" bind:plus="plusCount" bind:minus="minusCount" input-width="20px" button-size="20px"/>
+  </van-submit-bar>
 </view>
 
