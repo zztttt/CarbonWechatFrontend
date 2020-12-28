@@ -21,6 +21,7 @@ Page({
     rewards: [],
     reward: null,
     rewardCount: 1,
+    searchHistory: null,
     testrewards:[
       { name: "reward1", id: 1},
       { name: "reward2", id: 2},
@@ -108,17 +109,33 @@ Page({
         newRewards.push(cur);
       }
     }
-    //oldRewards.pop();
+
     this.setData({rewards: newRewards});
+    /*var recordLength = newRewards.length;
+    var searchHistory = this.data.searchHistory;
+    //var searchHistoryUpdated = searchHistory;
+    // update searchHistory
+    for(var i = 0; i < recordLength; ++i){
+      var cur = newRewards[i];
+      if(searchHistory.has(cur.id)){
+        var old = searchHistory.get(cur.id);
+        searchHistory.set(cur.id, old + 1);
+      }else{
+        searchHistory.set(cur.id, 1);
+      }
+    }
+    this.setData({searchHistory: searchHistory});
+    console.log(this.data.searchHistory);*/
     var userid = _userdata.id;
     var searchRecords = { userid : _userdata.id, records: []};
     var recordLength = newRewards.length;
     for(var i = 0; i < recordLength; ++i){
-      searchRecords.records.push(newRewards[i].id);
+      var cur = newRewards[i];
+      searchRecords.records.push(cur.id);
     }
     console.log(searchRecords);
     wx.request({
-      url: 'http://114.55.137.158:8080/user/searchRecord',
+      url: 'http://114.55.137.158:8080/user/postSearchRecord',
       method: "POST",
       header: {
         'content-type': 'application/json', // 默认值
@@ -166,12 +183,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var _userdata = wx.getStorageSync('userdata');
     wx.request({
       url: 'http://114.55.137.158:8080/user/getRewards',
-      method: "GET",
+      method: "POST",
       header: {
         'content-type': 'application/json', // 默认值
       },
+      data: {userid: _userdata.id},
       success(res) {
         console.log(res);
         that.setData({

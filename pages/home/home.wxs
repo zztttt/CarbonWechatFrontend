@@ -1,5 +1,4 @@
 var getImageUrl = function (name) {
-  console.log(name);
   if(name == "公交")
     return "/pages/assets/picture/shanghai_bus.jpg";
   else if(name === "单车")

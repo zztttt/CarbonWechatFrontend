@@ -39,11 +39,20 @@ Page({
         usertravelrecords: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
         */
         wx.setStorageSync('userdata', res.data.data);
+        wx.navigateTo({
+          url: '../home/home'
+        })
       }
     })
-    wx.navigateTo({
-      url: '../home/home'
-    })
+    
+  },
+  bindNameInput: function(e) {
+    this.setData({username: e.detail.value});
+    console.log(this.data.username);
+  },
+  bindPasswordInput: function(e) {
+    this.setData({password: e.detail.value});
+    console.log(this.data.password);
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
