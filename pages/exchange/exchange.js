@@ -85,6 +85,22 @@ Page({
       success(res) {
         console.log(res);
         that.setData({ show: false });
+        wx.showToast({
+          title: '兑换成功',
+          icon: 'none',
+          duration: 2000
+        })
+        wx.request({
+          url: 'http://114.55.137.158:8080/user/postExchangeRecordForRecommend',
+          method: "POST",
+          header: {
+            'content-type': 'application/json', // 默认值
+          },
+          data: {userid: _userdata.id, rewardid: that.data.reward.id},
+          success(res) {
+            console.log(res);
+          }
+        });
       }
     });
   },
@@ -135,7 +151,7 @@ Page({
     }
     console.log(searchRecords);
     wx.request({
-      url: 'http://114.55.137.158:8080/user/postSearchRecord',
+      url: 'http://114.55.137.158:8080/user/postSearchRecordForRecommend',
       method: "POST",
       header: {
         'content-type': 'application/json', // 默认值
@@ -185,7 +201,7 @@ Page({
     var that = this;
     var _userdata = wx.getStorageSync('userdata');
     wx.request({
-      url: 'http://114.55.137.158:8080/user/getRewards',
+      url: 'http://114.55.137.158:8080/user/recommendRewards',
       method: "POST",
       header: {
         'content-type': 'application/json', // 默认值
