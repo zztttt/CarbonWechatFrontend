@@ -9,8 +9,4 @@
   <view style="width:15rem; height:6rem; margin: 5rem 0 " >
       <van-button bindtap="bindViewTap" type="primary" block>登录</van-button>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  
 </view>
