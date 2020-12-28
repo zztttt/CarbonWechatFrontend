@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    username: 'test4',
+    username: 'wh',
     password: '123',
     userdata: null,
     motto: 'Hello World',

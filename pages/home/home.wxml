@@ -1,3 +1,5 @@
+<wxs module="util" src="./home.wxs"></wxs>
+
 <van-nav-bar title="" bind:click-left="onClickLeft" bind:click-right="onClickRight">
   <van-icon name="comment" slot="left"/>
   <van-icon name="photograph" slot="right"/>
@@ -9,7 +11,7 @@
     <block wx:for-items="{{vehicles}}" wx:for-item="vehicle" wx:key="name">
       <view style="width:100%; height:20%; text-align:center">
         <view style="display:flex; flex-direction:column;">
-          <van-image bindtap="bindViewTap" data-vehicle='{{vehicle}}' width="100%" height="4rem" fit="contain" src="http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg" /> 
+          <van-image bindtap="bindViewTap" data-vehicle='{{vehicle}}' width="100%" height="4rem" fit="contain" src="{{util.getImageUrl(vehicle.name)}}" /> 
           <text>{{vehicle.name}}: {{vehicle.credit}}积分/分钟</text>
           <van-divider />
         </view>

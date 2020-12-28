@@ -8,6 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    /* reward:
+    * credit: 180000
+    * exchanged: 0
+    * id: 1608479407495
+    * image: "https://carbon-image.oss-cn-shanghai.aliyuncs.com/csapp.jpg"
+    * inventory: 999
+    * name: "CSAPP"
+    * price: 180
+    */
+    originalRewards: [],
     rewards: [],
     reward: null,
     rewardCount: 1,
@@ -77,6 +87,48 @@ Page({
       }
     });
   },
+  searchChange(e) {
+    this.setData({searchValue: e.detail});
+    console.log("searchValue:", this.data.searchValue);
+  },
+  search(e) {
+    var _userdata = wx.getStorageSync('userdata');
+    console.log("search:", this.data.searchValue);
+    var searchValue = this.data.searchValue;
+    if(searchValue === ""){
+      this.setData({rewards: this.data.originalRewards});
+      return;
+    }
+    var oldRewards = this.data.rewards;
+    var len = oldRewards.length;
+    var newRewards = [];
+    for(var i = 0; i < len; ++i){
+      var cur = oldRewards[i];
+      if(cur.name.indexOf(searchValue) >= 0){
+        newRewards.push(cur);
+      }
+    }
+    //oldRewards.pop();
+    this.setData({rewards: newRewards});
+    var userid = _userdata.id;
+    var searchRecords = { userid : _userdata.id, records: []};
+    var recordLength = newRewards.length;
+    for(var i = 0; i < recordLength; ++i){
+      searchRecords.records.push(newRewards[i].id);
+    }
+    console.log(searchRecords);
+    wx.request({
+      url: 'http://114.55.137.158:8080/user/searchRecord',
+      method: "POST",
+      header: {
+        'content-type': 'application/json', // 默认值
+      },
+      data: searchRecords,
+      success(res) {
+        console.log(res);
+      }
+    });
+  },
 
   onSearch() {
     wx.showToast({
@@ -123,6 +175,7 @@ Page({
       success(res) {
         console.log(res);
         that.setData({
+          originalRewards: res.data.data.Rewards,
           rewards: res.data.data.Rewards
         })
       }

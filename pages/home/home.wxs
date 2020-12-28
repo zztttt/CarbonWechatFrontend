@@ -1,0 +1,14 @@
+var getImageUrl = function (name) {
+  console.log(name);
+  if(name == "公交")
+    return "/pages/assets/picture/shanghai_bus.jpg";
+  else if(name === "单车")
+    return "/pages/assets/picture/hello_bike.jpg";
+  else if(name === "地铁")
+    return "/pages/assets/picture/shanghai_metro.png";
+  return "http://img3m9.ddimg.cn/12/36/1546133799-1_w_1.jpg";
+}
+
+module.exports = {
+  getImageUrl : getImageUrl
+}
