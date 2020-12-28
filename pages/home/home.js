@@ -9,9 +9,9 @@ Page({
    */
   data: {
     vehicles: [
-      {name:"地铁", price:3, credit:10},
-      {name:"单车", price:1.5, credit:1},
-      {name:"公交", price:2, credit:5}
+      {name:"地铁", price:3, credit:15},
+      {name:"单车", price:1.5, credit:20},
+      {name:"公交", price:2, credit:8}
     ],
     active: '首页',
     visible: true,
