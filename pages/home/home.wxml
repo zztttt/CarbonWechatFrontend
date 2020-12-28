@@ -25,6 +25,6 @@
   <van-tabbar active="{{ active }}" bind:change="tarbarChange">
     <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
     <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>
-    <van-tabbar-item icon="mine-o" name="我的" info="5">我的</van-tabbar-item>
+    <van-tabbar-item icon="setting-o" name="我的">我的</van-tabbar-item>
   </van-tabbar>
 </view>

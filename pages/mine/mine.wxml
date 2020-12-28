@@ -1,16 +1,27 @@
 <van-panel title="{{username}}" desc="{{userdesc}}" status="{{istraveling}}" use-footer-slot>
   <van-cell-group>
     <van-cell title="我的积分" value="{{credit}}" size="large" />
+    <van-cell />
     <van-cell title="兑换记录" is-link size="large" link-type="navigateTo" url='../exchangeHistory/exchangeHistory' border="true" clickable="true" /> 
+    <van-cell />
     <van-cell title="出行记录" is-link size="large" link-type="navigateTo" url='../travelHistory/travelHistory' border="true" /> 
-    <van-cell title="test" is-link size="large" link-type="navigateTo" url='../test/test' border="true" /> 
+    <van-cell />
   </van-cell-group>
+  
+  <van-cell-group>
+    <van-cell title="设置" size="large" />
+    <van-cell />
+    <van-cell title="关于我们" size="large" />
+    <van-cell />
+    <van-cell title="客服服务" size="large" />
+  </van-cell-group>
+
 </van-panel>
 
 <view>
   <van-tabbar active="{{ active }}" bind:change="tarbarChange">
     <van-tabbar-item icon="home-o" name="首页">首页</van-tabbar-item>
     <van-tabbar-item icon="search" name="兑换">兑换</van-tabbar-item>
-    <van-tabbar-item icon="mine-o" info="5" name="我的">我的</van-tabbar-item>
+    <van-tabbar-item icon="setting-o" name="我的">我的</van-tabbar-item>
   </van-tabbar>
 </view>
