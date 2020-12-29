@@ -127,8 +127,10 @@ Page({
       }*/
       if(editDistance(cur.name, searchValue) <= 2){
         newRewards.push(cur);
+      }else if(cur.name.length >= 7 && editDistance(cur.name, searchValue) <= 4){
+        newRewards.push(cur);
       }
-      console.log("editDistance:", cur.name, ", ", searchValue, ". ", editDistance(cur.name, searchValue));
+      //console.log("editDistance:", cur.name, ", ", searchValue, ". ", editDistance(cur.name, searchValue));
     }
 
     this.setData({rewards: newRewards});
