@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <van-image width="20rem" height="8rem" fit="contain" src="https://carbon-image.oss-cn-shanghai.aliyuncs.com/carbon.jpg" /> 
   <view class="userinfo">
     <van-cell-group>
       <van-field bindblur="bindNameInput" label="用户名" placeholder="请输入用户名"/>
