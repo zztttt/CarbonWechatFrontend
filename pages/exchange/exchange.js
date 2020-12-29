@@ -1,6 +1,7 @@
 const app = getApp()
 // pages/books/books.js
 import { stringSwitch } from "../../utils/util";
+import { editDistance } from "../../utils/util";
 
 Page({
 
@@ -121,9 +122,13 @@ Page({
     var newRewards = [];
     for(var i = 0; i < len; ++i){
       var cur = oldRewards[i];
-      if(cur.name.indexOf(searchValue) >= 0){
+      /*if(cur.name.indexOf(searchValue) >= 0){
+        newRewards.push(cur);
+      }*/
+      if(editDistance(cur.name, searchValue) <= 2){
         newRewards.push(cur);
       }
+      console.log("editDistance:", cur.name, ", ", searchValue, ". ", editDistance(cur.name, searchValue));
     }
 
     this.setData({rewards: newRewards});
